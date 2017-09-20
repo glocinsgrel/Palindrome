@@ -32,11 +32,30 @@ namespace Pallindrome
 
         public static void WellIsItAPalindrome(string phrase)
         {
+            const string IsA = "Is a";
+            const string IsNotA = "Is NOT a";
+
             Console.Write("Phrase: ");
-            Console.BackgroundColor = InverseBackgroundColor;
+            
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write($"{phrase}");
-            Console.BackgroundColor = NormalBackgroundColor;
-            Console.WriteLine($" is {(IsAPalindrome(phrase)?"A":"not a")} Palindrome");
+            Console.ForegroundColor = NormalForegroundColor;           
+
+            Console.Write(" ");
+            switch (IsAPalindrome(phrase))
+            {
+                case true:
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.Write(IsA);
+                    Console.BackgroundColor = NormalBackgroundColor;
+                    break;
+                case false:
+                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                    Console.Write(IsNotA);
+                    Console.BackgroundColor = NormalBackgroundColor;
+                    break;
+            }
+            Console.WriteLine(" Palindrome");
         }
 
         public static bool IsAPalindrome(string phrase)
